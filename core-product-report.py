@@ -22,14 +22,14 @@ from time import sleep
 
 #cert.csv file should be inside the folder where you running the script
 
-ifile  = open('cert.csv', "rb")
+ifile  = open('/opt/cri/script/cert.csv', "rb")
 reader = csv.reader(ifile)
 
 ctfWsdl = 'https://forge.collab.net/ce-soap60/services/CollabNet?wsdl'
 
 ctf = SOAPpy.SOAPProxy(ctfWsdl)     
 
-login = ctf.login('supportl2','C0llab1234$')
+login = ctf.login('username','XXXXXXXXX')
 print "Logged in to Forge"
 
 userid= ctf.getUserSessionBySoapId(login)

@@ -30,7 +30,7 @@ ctfWsdl = 'https://forge.collab.net/ce-soap60/services/CollabNet?wsdl'
 
 ctf = SOAPpy.SOAPProxy(ctfWsdl)     
 
-login = ctf.login('supportl2','C0llab1234$')
+login = ctf.login('username','XXXXXXXXX')
 print "Logged in to Forge"
 
 userid= ctf.getUserSessionBySoapId(login)
@@ -117,10 +117,14 @@ for row in reader:
         for item in artifacts:
             for value in item:
                 print value['submittedDate']
-                #print type(item)
+		artifact_id = value['id']
+                print artifact_id
+		#print type(item)
                 #counter = counter + 1
 		urgency = tracker.getArtifactData2(login,artifact_id)['flexFields']['values'][2]
+		#urgency = tracker.getArtifactData2(login,artifact_id)
                 print urgency
+		#sys.exit()
                 modified_time_list = list(value['submittedDate'])
                 modified_time_list=map(int, modified_time_list)
                 print modified_time_list
@@ -148,7 +152,7 @@ for row in reader:
                 #print priority
                 #sys.exit()
                 
-                if date_difference >= -1:
+                if date_difference == -1:
                     counter=counter+1
                     table = table + "<tr><td><b><font color='black'>" + str(counter) + "</font></b></td><td><b><font color='black'><a href=https://forge.collab.net/sf/go/" + value['id'] + ">" + value['id'] +"</a></b></font> </td> <td> <b><font color='black'> " + value['title'].encode("utf-8") + "</font></b></td><td> <b><font color='black'>"  + modified_time + "</font></b></td><td><b><font color='black'>"+ urgency + "</font></b></td></tr>"
 

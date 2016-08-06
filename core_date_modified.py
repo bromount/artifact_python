@@ -53,11 +53,11 @@ def timeStamp():
 
 def sendmail_managers():
     sleep(5)
-    with open("/opt/cri/html/"+timeStamp()+"_crus_report.html","r") as file_open:
+    with open("/opt/cri/html/"+timeStamp()+"_corebug_report.html","r") as file_open:
         lines=file_open.read()
         print lines
 
-    subjectline = "CRUS Tracker Report"
+    subjectline = "CORE BUG Tracker Report"
     receiever = ['support-managers@collab.net','anandm@collab.net']
     sender = "annamalai@collab.net"
     msg = MIMEMultipart('alternative')
@@ -81,11 +81,11 @@ def get_user_artifact(user):
     filter._addItem('SoapFilter', { 'name' : 'submittedBy', 'value' : user})
     filter._addItem('SoapFilters',{'name':'status' ,'value': 'Open'})
     filter._addItem('SoapFilters1',{'name': 'assignedTo','value': 'anandm'})
-    filter._addItem('SoapFilters2',{'name': 'assignedTo','value': 'srose'})
+    #filter._addItem('SoapFilters2',{'name': 'assignedTo','value': 'srose'})
     filter._addItem('SoapFilters3',{'name': 'assignedTo','value': 'prodmgmt'})
       
     #tracker2175 is the CRUS tracker
-    tracker_id = "tracker2175" 
+    tracker_id = "tracker22420" 
     artifacts = tracker.getArtifactList2(login,tracker_id,filter)
     print artifacts
     return artifacts
@@ -154,7 +154,7 @@ for row in reader:
                 
                         print date_difference
                                       
-                        if date_difference <= -6:
+                        if date_difference <= -4:
                             counter=counter+1
                             table = table + "<tr><td><b><font color='black'>" + str(counter) + "</font></b></td><td><b><font color='black'><a href=https://forge.collab.net/sf/go/" + value['id'] + ">" + value['id'] +"</a></b></font> </td> <td> <b><font color='black'> " + value['title'].encode("utf-8") + "</font></b></td><td> <b><font color='black'>"  + submitted_time + "</font></b></td></tr>"
                         #print table
@@ -162,7 +162,7 @@ for row in reader:
         print table
               
         if counter > 0:
-            html_file=open('/opt/cri/html/'+timeStamp()+'_crus_report.html','a')    
+            html_file=open('/opt/cri/html/'+timeStamp()+'_corebug_report.html','a')    
             print >>html_file, username,table, table_end
             html_file.close()
         print "..."

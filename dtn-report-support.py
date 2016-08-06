@@ -32,7 +32,7 @@ ctfWsdl = 'https://forge.collab.net/ce-soap60/services/CollabNet?wsdl'
 
 ctf = SOAPpy.SOAPProxy(ctfWsdl)     
 
-login = ctf.login('supportl2','C0llab1234$')
+login = ctf.login('username','XXXXXXXXX')
 print "Logged in to Forge"
 
 userid= ctf.getUserSessionBySoapId(login)
@@ -88,7 +88,7 @@ def sendmail_managers():
         print lines
 
     subjectline = "DTN Tracker Report - Support"
-    receiever = ['support-managers@collab.net']
+    receiever = ['support-managers@collab.net','annamalai@collab.net']
     sender = "annamalai@collab.net"
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subjectline
