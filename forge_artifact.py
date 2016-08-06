@@ -13,7 +13,7 @@ ctfWsdl = 'https://forge.collab.net/ce-soap60/services/CollabNet?wsdl'
 
 ctf = SOAPpy.SOAPProxy(ctfWsdl)     
 
-login = ctf.login('annamalai','Openthis22@@')
+login = ctf.login('username','password@@')
 print "Logged in to Forge"
 
 userid= ctf.getUserSessionBySoapId(login)
